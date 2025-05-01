@@ -40,39 +40,41 @@ const iExpectThisToWork = (params: ExpectedType) => {
 /*
   However we have two issues.
 
-  The first is that while sod has correctly detected that limit and skip are
+  The first is that while Zod has correctly detected that limit and skip are
   required because they default (https://github.com/kubb-labs/kubb/issues/1290),
   it still thinks the entire type is optional.
 */
-type ZodOnlyActualDuckType =
+type ZodOnly =
   | {
       limit: number;
       skip: number;
     }
   | undefined;
-const zodOnlyActualDuckType = (params: ZodOnlyActualDuckType) => {
+const zodOnly = (params: ZodOnly) => {
   console.log(params);
 };
 
 console.log("Zod Only Schema");
+// thingQuery = {skip: 0, limit: 100}
 const thingQuery = zodOnlySchema.parse({});
 iExpectThisToWork(thingQuery); // this does not type check correctly
-zodOnlyActualDuckType(thingQuery);
+zodOnly(thingQuery);
 
 /*
-  The second issue is that the Typescript plugin has incorrectly detected that
+  The second issue is that the Typescript plugin has incorrectly decided that
   both limit and skip are optional, even though they have defaults.
 
   Though interestingly it doesn't think that the entire type can be optional.
 */
-type ZodTypedActualDuckType = {
+type ZodTyped = {
   limit?: number;
   skip?: number;
 };
-const zodTypedActualDuckType = (params: ZodTypedActualDuckType) => {
+const zodTyped = (params: ZodTyped) => {
   console.log(params);
 };
 console.log("Zod Typed Schema");
+// thingTypedQuery = {skip: 0, limit: 100}
 const thingTypedQuery = zodTypedSchema.parse({});
 iExpectThisToWork(thingTypedQuery); // this does not type check correctly
-zodTypedActualDuckType(thingTypedQuery);
+zodTyped(thingTypedQuery);
