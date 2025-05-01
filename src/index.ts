@@ -56,7 +56,7 @@ const zodOnlyActualDuckType = (params: ZodOnlyActualDuckType) => {
 
 console.log("Zod Only Schema");
 const thingQuery = zodOnlySchema.parse({});
-iExpectThisToWork(thingQuery); // this should compile!!
+iExpectThisToWork(thingQuery); // this does not type check correctly
 zodOnlyActualDuckType(thingQuery);
 
 /*
@@ -74,5 +74,5 @@ const zodTypedActualDuckType = (params: ZodTypedActualDuckType) => {
 };
 console.log("Zod Typed Schema");
 const thingTypedQuery = zodTypedSchema.parse({});
-iExpectThisToWork(thingTypedQuery); // this should compile!!
+iExpectThisToWork(thingTypedQuery); // this does not type check correctly
 zodTypedActualDuckType(thingTypedQuery);
