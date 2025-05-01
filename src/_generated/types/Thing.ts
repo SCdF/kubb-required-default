@@ -5,27 +5,18 @@
 
 export type Thing = {
   /**
-   * @type string
+   * @description Maximum number of things to return
+   * @minLength 1
+   * @maxLength 100
+   * @default 100
+   * @type integer | undefined
    */
-  id: string
+  limit?: number
   /**
-   * @type object | undefined
+   * @description Number of things to skip
+   * @minLength 0
+   * @default 0
+   * @type integer | undefined
    */
-  params?: {
-    /**
-     * @description Maximum number of things to return
-     * @minLength 1
-     * @maxLength 100
-     * @default 100
-     * @type integer | undefined
-     */
-    limit?: number
-    /**
-     * @description Number of things to skip
-     * @minLength 0
-     * @default 0
-     * @type integer | undefined
-     */
-    skip?: number
-  }
+  skip?: number
 }

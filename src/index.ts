@@ -1,4 +1,5 @@
 import { getThingsQueryParamsSchema as zodOnlySchema } from "./_generated/zod-only/getThingsSchema.ts";
+import { thingSchema } from "./_generated/zod-only/thingSchema.ts";
 import { getThingsQueryParamsSchema as zodTypedSchema } from "./_generated/zod-typed/getThingsSchema.ts";
 
 /*
@@ -58,6 +59,13 @@ console.log("Zod Only Schema");
 const thingQuery = zodOnlySchema.parse({}); // = {skip: 0, limit: 100}
 iExpectThisToWork(thingQuery); // this does not type check correctly
 zodOnly(thingQuery);
+
+/*
+  This only happens with query parameters, not with standard components, which
+  work fine.
+*/
+const thingComponent = thingSchema.parse({});
+iExpectThisToWork(thingComponent); // this DOES type check correctly
 
 /*
   The second issue is that the Typescript plugin has incorrectly decided that

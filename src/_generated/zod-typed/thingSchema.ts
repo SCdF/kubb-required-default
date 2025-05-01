@@ -8,11 +8,6 @@ import type { ToZod } from '@kubb/plugin-zod/utils'
 import { z } from 'zod'
 
 export const thingSchema = z.object({
-  id: z.string(),
-  params: z
-    .object({
-      limit: z.number().int().min(1).max(100).default(100).describe('Maximum number of things to return'),
-      skip: z.number().int().min(0).default(0).describe('Number of things to skip'),
-    })
-    .optional(),
+  limit: z.number().int().min(1).max(100).default(100).describe('Maximum number of things to return'),
+  skip: z.number().int().min(0).default(0).describe('Number of things to skip'),
 }) as unknown as ToZod<Thing>
