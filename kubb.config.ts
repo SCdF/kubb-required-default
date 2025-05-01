@@ -16,7 +16,15 @@ export default defineConfig(() => {
       pluginOas(),
       pluginTs(),
       pluginZod({
+        output: {
+          path: "zod-only",
+        },
+      }),
+      pluginZod({
         typed: true,
+        output: {
+          path: "zod-typed",
+        },
       }),
     ],
   };

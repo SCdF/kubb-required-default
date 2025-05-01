@@ -5,8 +5,27 @@
 
 export type Thing = {
   /**
-   * @description The unique identifier for the thing
    * @type string
    */
   id: string
+  /**
+   * @type object | undefined
+   */
+  params?: {
+    /**
+     * @description Maximum number of things to return
+     * @minLength 1
+     * @maxLength 100
+     * @default 100
+     * @type integer | undefined
+     */
+    limit?: number
+    /**
+     * @description Number of things to skip
+     * @minLength 0
+     * @default 0
+     * @type integer | undefined
+     */
+    skip?: number
+  }
 }

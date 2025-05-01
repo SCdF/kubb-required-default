@@ -20,6 +20,9 @@ dependencies:
   '@kubb/plugin-zod':
     specifier: ^3.10.5
     version: 3.10.5(@kubb/react@3.10.5)
+  zod:
+    specifier: ^3.24.3
+    version: 3.24.3
 
 packages:
 
