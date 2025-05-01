@@ -55,8 +55,7 @@ const zodOnly = (params: ZodOnly) => {
 };
 
 console.log("Zod Only Schema");
-// thingQuery = {skip: 0, limit: 100}
-const thingQuery = zodOnlySchema.parse({});
+const thingQuery = zodOnlySchema.parse({}); // = {skip: 0, limit: 100}
 iExpectThisToWork(thingQuery); // this does not type check correctly
 zodOnly(thingQuery);
 
@@ -74,7 +73,6 @@ const zodTyped = (params: ZodTyped) => {
   console.log(params);
 };
 console.log("Zod Typed Schema");
-// thingTypedQuery = {skip: 0, limit: 100}
-const thingTypedQuery = zodTypedSchema.parse({});
+const thingTypedQuery = zodTypedSchema.parse({}); // = {skip: 0, limit: 100}
 iExpectThisToWork(thingTypedQuery); // this does not type check correctly
 zodTyped(thingTypedQuery);
